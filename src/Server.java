@@ -31,11 +31,11 @@ public class Server implements Executor {
         try {
             System.out.println("Server started...");
             System.setProperty("java.rmi.server.hostname","ec2-34-194-59-42.compute-1.amazonaws.com");
-//            Server obj = new Server();
-//            serviceImpl = obj;
+            Server obj = new Server();
+            serviceImpl = obj;
             Registry registry = LocateRegistry.createRegistry(8080);
-//            Executor stub = (Executor) UnicastRemoteObject.exportObject(serviceImpl, 8080);
-            Executor stub = (Executor) UnicastRemoteObject.exportObject(new Server(), 8080);
+            Executor stub = (Executor) UnicastRemoteObject.exportObject(serviceImpl, 8080);
+//            Executor stub = (Executor) UnicastRemoteObject.exportObject(new Server(), 8080);
             registry.rebind("Executor", stub);
             System.out.println("Server ready...");
             System.out.println("Registry list: " + registry.list()[0] + "\n");
