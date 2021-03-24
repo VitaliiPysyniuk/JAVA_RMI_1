@@ -8,16 +8,9 @@ public class Server implements Executor {
     private static Server serviceImpl = null;
     public Server() { }
 
-    public String ping(long time) {
+    public String ping() {
         System.out.println("Server is active");
-//        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-//        Date date = new Date(time);
-//        System.out.println(formatter.format(date));
-        long connectionTime = System.currentTimeMillis() - time;
-//        formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-//        date = new Date(System.currentTimeMillis());
-//        System.out.println(formatter.format(date));
-        return ("Connection time: " + connectionTime + " ms");
+        return ("Connection is active");
     }
 
     public int add(int a, int b) {
