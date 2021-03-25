@@ -1,5 +1,5 @@
 public class ExecutorImpl implements Executor {
-    static double[][] R10, R16, R20, R32, R42;
+    static double[][] R10, R16, R20, R32, R42, R51, R61;
 
     public String ping() {
         System.out.println("Server is active");
@@ -37,6 +37,18 @@ public class ExecutorImpl implements Executor {
         R42 =  Matrix.mult(a, R32);
         return R42;
     }
+
+    public double[][] calculateR51(double[][] a, double[][] b) {
+        R51 =  Matrix.mult(a, b);
+        return R51;
+    }
+
+    public double[][] calculateR61(double[][] a) {
+        R61 =  Matrix.mult(a, R51);
+        return R61;
+    }
+
+
 
 //    public void simulateDelay(int milliseconds) {
 //        try {
