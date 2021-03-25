@@ -8,6 +8,6 @@ public interface Executor extends Remote {
     double[][] calculateR20(double[][] a, double[][] b) throws RemoteException;
     double[][] calculateR32(double[][] a) throws RemoteException;
     double[][] calculateR42(double[][] a) throws RemoteException;
-    double[][] calculateR51(double[][] a, double[][] b) throws RemoteException;
-    double[][] calculateR61(double[][] a) throws RemoteException;
+    double[][] calculateR50(double[][] a) throws RemoteException;
+    double[][] calculateR60() throws RemoteException;
 }
