@@ -74,6 +74,7 @@ public class ExecutorImpl implements Executor {
         A2C2 = calculationProcess.result;
         System.out.println("\t\tCalculation result: ");
         Matrix.show(calculationProcess.result);
+
         return A2C2;
     }
 //
@@ -135,7 +136,7 @@ class CalculationProcess implements Runnable {
 
     public void run() {
         synchronized (executor) {
-            result = executor.doCalculation(calc, a, b);
+            this.result = executor.doCalculation(calc, a, b);
             System.out.println("In CalculationProcess");
             Matrix.show(result);
             System.out.println("---------------------------------------------------");
