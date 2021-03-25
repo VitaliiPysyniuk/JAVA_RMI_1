@@ -40,11 +40,11 @@ public class ExecutorImpl implements Executor {
         waitForThread(calculationProcess.thread);
 //        if (singleThread)
 //            waitForThread(calculationProcess.thread);
-        C2 = calculationProcess.getResult();
         System.out.println("\t\tCalculation result: ||||||||||||");
         System.out.println(!(calculationProcess == null));
         Matrix.show(calculationProcess.getResult());
         System.out.println("|||||||||||||||||||||||||||||\n\n");
+        C2 = calculationProcess.getResult();
         return C2;
     }
 
@@ -65,6 +65,7 @@ public class ExecutorImpl implements Executor {
         System.out.println(!(calculationProcess == null));
         Matrix.show(calculationProcess.getResult());
         System.out.println("|||||||||||||||||||||||||||||\n\n");
+        B = calculationProcess.getResult();
         return B;
     }
 
@@ -78,11 +79,11 @@ public class ExecutorImpl implements Executor {
 //        if (singleThread)
 //            waitForThread(calculationProcess.thread);
 
-//        A2C2 = calculationProcess.getResult();
         System.out.println("\t\tCalculation result: ||||||||||||");
         System.out.println(!(calculationProcess == null));
         Matrix.show(calculationProcess.getResult());
         System.out.println("|||||||||||||||||||||||||||||\n\n");
+        A2C2 = calculationProcess.getResult();
         return A2C2;
     }
 
