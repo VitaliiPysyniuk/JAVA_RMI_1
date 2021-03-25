@@ -60,6 +60,31 @@ public class ExecutorImpl implements Executor {
         return B;
     }
 
+    public double[][] calculateC2andB(int n) {
+        System.out.println("calculated C2andB");
+        calc = (a, b) -> {
+            double[][] matrix = new double[n][n];
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < n; j++)
+                    matrix[j][i] = 20 * (Math.pow(i, 3) - Math.pow(j, 3) + 2);
+            return matrix;
+        };
+        CalculationProcess calculationProcess1 = new CalculationProcess(calc, lambdaExecutor);
+        calc = (a, b) -> {
+            double[][] vector = new double[n][1];
+            for (int i = 0; i < n; i++)
+                vector[i][0] = 20 * (Math.pow(i, 3) + 20);
+            return vector;
+        };
+        CalculationProcess calculationProcess2 = new CalculationProcess(calc, lambdaExecutor);
+        if (singleThread) {
+            waitForThread(calculationProcess1.thread);
+            waitForThread(calculationProcess2.thread);
+        }
+        C2 = calculationProcess1.getResult();
+        return C2;
+    }
+
     public double[][] calculateA2C2(double[][] a, double[][] b) {
         System.out.println("calculated C2");
         calc = (aa, bb) -> {
