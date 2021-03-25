@@ -40,6 +40,7 @@ public class ExecutorImpl implements Executor {
         if (singleThread)
             waitForThread(calculationProcess.thread);
         C2 = calculationProcess.result;
+        System.out.println("To ye tyt!");
         Matrix.show(C2);
         return C2;
     }
