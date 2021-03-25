@@ -2,22 +2,22 @@ public class ExecutorImpl implements Executor {
     ICalculation calc;
     LambdaExecutor lambdaExecutor = new LambdaExecutor();
     static double[][] C2, B, A2C2;
-    boolean singleThread = false;
+//    boolean singleThread = false;
 
     public String ping() {
         System.out.println("Server is active");
         return ("Connection is active");
     }
 
-    public String enableMultithreadedMode() {
-        singleThread = false;
-        return "Multithreaded mode ON";
-    }
-
-    public String enableSingleThreadedMode() {
-        singleThread = true;
-        return "Single Threaded mode ON";
-    }
+//    public String enableMultithreadedMode() {
+//        singleThread = false;
+//        return "Multithreaded mode ON";
+//    }
+//
+//    public String enableSingleThreadedMode() {
+//        singleThread = true;
+//        return "Single Threaded mode ON";
+//    }
 
     public double[][] createMatrix(int n, double max, double min) {
         System.out.println("Matrix creation");
@@ -37,8 +37,8 @@ public class ExecutorImpl implements Executor {
             return matrix;
         };
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
-        if (singleThread)
-            waitForThread(calculationProcess.thread);
+//        if (singleThread)
+//            waitForThread(calculationProcess.thread);
         C2 = calculationProcess.result;
         System.out.println("To ye tyt!");
         Matrix.show(C2);
@@ -54,8 +54,8 @@ public class ExecutorImpl implements Executor {
             return vector;
         };
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
-        if (singleThread)
-            waitForThread(calculationProcess.thread);
+//        if (singleThread)
+//            waitForThread(calculationProcess.thread);
         B = calculationProcess.result;
         return B;
     }
@@ -66,8 +66,8 @@ public class ExecutorImpl implements Executor {
             return Matrix.mult(aa, bb);
         };
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
-        if (singleThread)
-            waitForThread(calculationProcess.thread);
+//        if (singleThread)
+//            waitForThread(calculationProcess.thread);
         A2C2 = calculationProcess.result;
         return A2C2;
     }
