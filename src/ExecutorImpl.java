@@ -17,33 +17,40 @@ public class ExecutorImpl implements Executor {
         return ab;
     }
 
-    public double[][] bColumn(int n) {
-        System.out.println("calculateB");
-//        calc = (a, b) -> {
-//            double[][] vector = new double[n][1];
-//            for (int i = 0; i < n; i++)
-//                vector[i][0] = 20 * (Math.pow(i, 3) + 20);
-//            return vector;
-//        };
-//        CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
-//        try {
-//            calculationProcess.process.join();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        B = calculationProcess.result;
-        B = new double[n][n];
+    public double[][] calculateB(int n) {
+        System.out.println("calculated B");
+        calc = (a, b) -> {
+            double[][] vector = new double[n][1];
+            for (int i = 0; i < n; i++)
+                vector[i][0] = 20 * (Math.pow(i, 3) + 20);
+            return vector;
+        };
+        CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
+        simulateDelay(calculationProcess.thread, 1000);
+        waitForThread(calculationProcess.thread);
+        B = calculationProcess.result;
         return B;
     }
 
-    public double getDouble(double x) {
-        System.out.println("getDouble");
-        return x;
+    public void waitForThread(Thread process) {
+        try {
+            process.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void simulateDelay(Thread thread, int milliseconds) {
+        try {
+            thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 
     public double[][] calculateC2(int n) {
-        System.out.println("calculateC2");
+        System.out.println("calculated C2");
         calc = (a, b) -> {
             double[][] matrix = new double[n][n];
             for (int i = 0; i < n; i++)
@@ -52,11 +59,7 @@ public class ExecutorImpl implements Executor {
             return matrix;
         };
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
-        try {
-            calculationProcess.process.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitForThread(calculationProcess.thread);
         C2 = calculationProcess.result;
         return C2;
     }
@@ -81,7 +84,7 @@ class LambdaExecutor {
 
 //потік виконання обчислень
 class CalculationProcess implements Runnable {
-    public Thread process;
+    public Thread thread;
     public double[][] result;
     LambdaExecutor executor;
     ICalculation calc;
@@ -94,15 +97,15 @@ class CalculationProcess implements Runnable {
         this.executor = _executor;
         this.a = _a;
         this.b = _b;
-        this.process = new Thread(this);
-        this.process.start();
+        this.thread = new Thread(this);
+        this.thread.start();
     }
 
     public CalculationProcess(ICalculation _calc, LambdaExecutor _executor) {
         this.calc = _calc;
         this.executor = _executor;
-        this.process = new Thread(this);
-        this.process.start();
+        this.thread = new Thread(this);
+        this.thread.start();
     }
 
     public void run() {
