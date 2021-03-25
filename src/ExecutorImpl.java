@@ -18,7 +18,7 @@ public class ExecutorImpl implements Executor {
     }
 
     public double[][] calculateB(int n) {
-        System.out.println("calculated B");
+        System.out.println("Calculated B");
         calc = (a, b) -> {
             double[][] vector = new double[n][1];
             for (int i = 0; i < n; i++)
@@ -26,27 +26,12 @@ public class ExecutorImpl implements Executor {
             return vector;
         };
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
-        simulateDelay(calculationProcess.thread, 1000);
         waitForThread(calculationProcess.thread);
         B = calculationProcess.result;
         return B;
     }
 
-    public void waitForThread(Thread process) {
-        try {
-            process.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
-    public void simulateDelay(Thread thread, int milliseconds) {
-        try {
-            thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
 
     public double[][] calculateC2(int n) {
@@ -63,7 +48,24 @@ public class ExecutorImpl implements Executor {
         C2 = calculationProcess.result;
         return C2;
     }
+    public void waitForThread(Thread process) {
+        try {
+            process.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void simulateDelay(Thread thread, int milliseconds) {
+        try {
+            thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
+
 
 interface ICalculation {
     double[][] doCalculation(double[][] a, double[][] b);
