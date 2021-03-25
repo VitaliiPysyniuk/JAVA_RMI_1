@@ -7,4 +7,5 @@ public interface Executor extends Remote {
     double[][] calculateR16(int n) throws RemoteException;
     double[][] calculateR20(double[][] a, double[][] b) throws RemoteException;
     double[][] calculateR32(double[][] a) throws RemoteException;
+    double[][] calculateR42(double[][] a) throws RemoteException;
 }
