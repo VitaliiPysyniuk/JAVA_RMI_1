@@ -9,4 +9,6 @@ public interface Executor extends Remote {
     double[][] calculateB(int n) throws RemoteException;
     double[][] calculateC2(int n) throws RemoteException;
     double[][] calculateA2C2(double[][] a, double[][] b) throws RemoteException;
+
+
 }
