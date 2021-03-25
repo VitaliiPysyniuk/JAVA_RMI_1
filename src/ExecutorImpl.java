@@ -37,6 +37,7 @@ public class ExecutorImpl implements Executor {
             return matrix;
         };
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
+        waitForThread(calculationProcess.thread);
 //        if (singleThread)
 //            waitForThread(calculationProcess.thread);
         C2 = calculationProcess.getResult();
@@ -56,6 +57,7 @@ public class ExecutorImpl implements Executor {
             return vector;
         };
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
+        waitForThread(calculationProcess.thread);
 //        if (singleThread)
 //            waitForThread(calculationProcess.thread);
 //        B = calculationProcess.getResult();
@@ -72,6 +74,7 @@ public class ExecutorImpl implements Executor {
             return Matrix.mult(aa, bb);
         };
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
+        waitForThread(calculationProcess.thread);
 //        if (singleThread)
 //            waitForThread(calculationProcess.thread);
 
@@ -82,14 +85,14 @@ public class ExecutorImpl implements Executor {
         System.out.println("|||||||||||||||||||||||||||||\n\n");
         return A2C2;
     }
-//
-//    public void waitForThread(Thread process) {
-//        try {
-//            process.join();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//    }
+
+    public void waitForThread(Thread process) {
+        try {
+            process.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 //
 //    public void simulateDelay(Thread thread, int milliseconds) {
 //        try {
