@@ -1,12 +1,22 @@
 public class ExecutorImpl implements Executor {
     ICalculation calc;
-//    multiplication, multiplicationT, subtraction, addition;
     LambdaExecutor lambdaExecutor = new LambdaExecutor();
-    static double[][] C2, B;
+    boolean singleThread = false;
+    static double[][] C2, B, A2C2;
 
     public String ping() {
         System.out.println("Server is active");
         return ("Connection is active");
+    }
+
+    public String enableMultithreadedMode() {
+        singleThread = false;
+        return "Multithreaded mode ON";
+    }
+
+    public String enableSingleThreadedMode() {
+        singleThread = true;
+        return "Single Threaded mode ON";
     }
 
     public double[][] createMatrix(int n, double max, double min) {
@@ -16,23 +26,6 @@ public class ExecutorImpl implements Executor {
         System.out.println("Matrix created");
         return ab;
     }
-
-    public double[][] calculateB(int n) {
-        System.out.println("Calculated B");
-        calc = (a, b) -> {
-            double[][] vector = new double[n][1];
-            for (int i = 0; i < n; i++)
-                vector[i][0] = 20 * (Math.pow(i, 3) + 20);
-            return vector;
-        };
-        CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
-        waitForThread(calculationProcess.thread);
-        B = calculationProcess.result;
-        return B;
-    }
-
-
-
 
     public double[][] calculateC2(int n) {
         System.out.println("calculated C2");
@@ -44,10 +37,39 @@ public class ExecutorImpl implements Executor {
             return matrix;
         };
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
-        waitForThread(calculationProcess.thread);
+        if (singleThread)
+            waitForThread(calculationProcess.thread);
         C2 = calculationProcess.result;
         return C2;
     }
+
+    public double[][] calculateB(int n) {
+        System.out.println("Calculated B");
+        calc = (a, b) -> {
+            double[][] vector = new double[n][1];
+            for (int i = 0; i < n; i++)
+                vector[i][0] = 20 * (Math.pow(i, 3) + 20);
+            return vector;
+        };
+        CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
+        if (singleThread)
+            waitForThread(calculationProcess.thread);
+        B = calculationProcess.result;
+        return B;
+    }
+
+    public double[][] calculateA2C2(double[][] a, double[][] b) {
+        System.out.println("calculated C2");
+        calc = (aa, bb) -> {
+            return Matrix.mult(aa, bb);
+        };
+        CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
+        if (singleThread)
+            waitForThread(calculationProcess.thread);
+        A2C2 = calculationProcess.result;
+        return A2C2;
+    }
+
     public void waitForThread(Thread process) {
         try {
             process.join();
