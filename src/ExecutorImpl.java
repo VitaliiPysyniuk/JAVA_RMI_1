@@ -39,9 +39,9 @@ public class ExecutorImpl implements Executor {
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
 //        if (singleThread)
 //            waitForThread(calculationProcess.thread);
-        C2 = calculationProcess.result;
+        C2 = calculationProcess.getResult();
         System.out.println("\t\tCalculation result: ");
-        Matrix.show(calculationProcess.result);
+        Matrix.show(calculationProcess.getResult());
         return C2;
     }
 
@@ -56,9 +56,9 @@ public class ExecutorImpl implements Executor {
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
 //        if (singleThread)
 //            waitForThread(calculationProcess.thread);
-        B = calculationProcess.result;
+        B = calculationProcess.getResult();
         System.out.println("\t\tCalculation result: ");
-        Matrix.show(calculationProcess.result);
+        Matrix.show(calculationProcess.getResult());
         return B;
     }
 
@@ -71,9 +71,9 @@ public class ExecutorImpl implements Executor {
 //        if (singleThread)
 //            waitForThread(calculationProcess.thread);
 
-        A2C2 = calculationProcess.result;
+        A2C2 = calculationProcess.getResult();
         System.out.println("\t\tCalculation result: ");
-        Matrix.show(calculationProcess.result);
+        Matrix.show(calculationProcess.getResult());
 
         return A2C2;
     }
@@ -111,7 +111,7 @@ class LambdaExecutor {
 //потік виконання обчислень
 class CalculationProcess implements Runnable {
     public Thread thread;
-    public double[][] result;
+    private double[][] result;
     LambdaExecutor executor;
     ICalculation calc;
     double[][] a = {{}};
@@ -141,6 +141,11 @@ class CalculationProcess implements Runnable {
             Matrix.show(result);
             System.out.println("---------------------------------------------------");
         }
+    }
+
+    public double[][] getResult() {
+        System.out.println(Matrix.size(this.result));
+        return this.result;
     }
 
 
