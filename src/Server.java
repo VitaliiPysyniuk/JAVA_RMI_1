@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Server {
 //    private static Server serviceImpl = null;
-    private static ExecutorImpl serviceImpl = null;
+    private static Executor serviceImpl = null;
     public Server() { }
 
 
