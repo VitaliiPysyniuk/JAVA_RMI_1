@@ -97,6 +97,29 @@ public class ExecutorImpl implements Executor {
         return A2C2;
     }
 
+    public double[][] withoutThreadsB(int n) {
+        System.out.println("Calculated withoutThreadsB");
+        double[][] vector = new double[n][1];
+        for (int i = 0; i < n; i++)
+            vector[i][0] = 20 * (Math.pow(i, 3) + 20);
+        return vector;
+    }
+
+    public double[][] withoutThreadsC2(int n) {
+        System.out.println("Calculated withoutThreadsC2");
+        double[][] matrix = new double[n][n];
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                matrix[j][i] = 20 * (Math.pow(i, 3) - Math.pow(j, 3) + 2);
+        return matrix;
+    }
+
+
+
+
+
+
+
     public void waitForThread(Thread process) {
         try {
             process.join();
@@ -104,6 +127,8 @@ public class ExecutorImpl implements Executor {
             e.printStackTrace();
         }
     }
+
+
 //
 //    public void simulateDelay(Thread thread, int milliseconds) {
 //        try {
