@@ -9,7 +9,6 @@ public class ExecutorImpl implements Executor {
         return ("Connection is active");
     }
 
-
     public double[][] createMatrix(int n, double max, double min) {
         System.out.println("Matrix creation");
         double[][] ab = Matrix.create(n, max, min);
