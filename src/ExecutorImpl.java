@@ -73,11 +73,8 @@ interface ICalculation {
 class LambdaExecutor {
     public double[][] doCalculation(ICalculation ref, double[][] a, double[][] b) {
         double[][] result = ref.doCalculation(a, b);
-//        if (Decomposition.showIntermediateResults) {
-//        if (false) {
-//            System.out.println("\t\tCalculation result: ");
-//            Matrix.show(result);
-//        }
+            System.out.println("\t\tCalculation result: ");
+            Matrix.show(result);
         return result;
     }
 }
@@ -110,9 +107,6 @@ class CalculationProcess implements Runnable {
 
     public void run() {
         synchronized (executor) {
-//            if (Decomposition.showIntermediateResults)
-//            if (false)
-//                System.out.println("\n" + this.process.getName() + " execute calculation: ");
             result = executor.doCalculation(calc, a, b);
         }
     }
