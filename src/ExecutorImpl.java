@@ -40,8 +40,10 @@ public class ExecutorImpl implements Executor {
 //        if (singleThread)
 //            waitForThread(calculationProcess.thread);
         C2 = calculationProcess.getResult();
-        System.out.println("\t\tCalculation result: ");
+        System.out.println("\t\tCalculation result: ||||||||||||");
+        System.out.println(!(calculationProcess == null));
         Matrix.show(calculationProcess.getResult());
+        System.out.println("|||||||||||||||||||||||||||||\n\n");
         return C2;
     }
 
@@ -56,9 +58,11 @@ public class ExecutorImpl implements Executor {
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
 //        if (singleThread)
 //            waitForThread(calculationProcess.thread);
-        B = calculationProcess.getResult();
-        System.out.println("\t\tCalculation result: ");
+//        B = calculationProcess.getResult();
+        System.out.println("\t\tCalculation result: ||||||||||||");
+        System.out.println(!(calculationProcess == null));
         Matrix.show(calculationProcess.getResult());
+        System.out.println("|||||||||||||||||||||||||||||\n\n");
         return B;
     }
 
@@ -71,10 +75,11 @@ public class ExecutorImpl implements Executor {
 //        if (singleThread)
 //            waitForThread(calculationProcess.thread);
 
-        A2C2 = calculationProcess.getResult();
-        System.out.println("\t\tCalculation result: ");
+//        A2C2 = calculationProcess.getResult();
+        System.out.println("\t\tCalculation result: ||||||||||||");
+        System.out.println(!(calculationProcess == null));
         Matrix.show(calculationProcess.getResult());
-
+        System.out.println("|||||||||||||||||||||||||||||\n\n");
         return A2C2;
     }
 //
@@ -144,6 +149,7 @@ class CalculationProcess implements Runnable {
     }
 
     public double[][] getResult() {
+        System.out.print("Print matrix size: ");
         System.out.println(Matrix.size(this.result));
         return this.result;
     }
