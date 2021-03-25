@@ -50,8 +50,7 @@ public class ExecutorImpl implements Executor {
 
     public double[][] calculateR60() {
         System.out.println("Calculated R60");
-
-        R60 =  Matrix.mult(R32, Matrix.transp(R50));
+        R60 =  Matrix.mult(Matrix.transp(R32), R50);
         return R60;
     }
 
