@@ -85,8 +85,8 @@ class CalculationProcess implements Runnable {
     public double[][] result;
     LambdaExecutor executor;
     ICalculation calc;
-    double[][] a;
-    double[][] b;
+    double[][] a = {{}};
+    double[][] b = {{}};
 
     public CalculationProcess(ICalculation _calc, LambdaExecutor _executor, double[][] _a, double[][] _b) {
         this.calc = _calc;
