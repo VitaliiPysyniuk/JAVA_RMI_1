@@ -17,8 +17,8 @@ public class ExecutorImpl implements Executor {
         return ab;
     }
 
-//    public double[][] calculateC2(int n) {
-//        System.out.println("calculateC2");
+    public double[][] calculateC2(int n) {
+        System.out.println("calculateC2");
 //        calc = (a, b) -> {
 //            double[][] ab = new double[n][n];
 //            for (int i = 0; i < n; i++)
@@ -28,7 +28,12 @@ public class ExecutorImpl implements Executor {
 //        };
 //        new CalculationProcess(calc, lambdaExecutor, ExecutorImpl.C2);
 //        return ExecutorImpl.C2;
-//    }
+        double[][] ab = new double[n][n];
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                ab[j][i] = 20 * (Math.pow(i, 3) - Math.pow(j, 3) + 2);
+        return ab;
+    }
 }
 
 //interface ICalculation {
