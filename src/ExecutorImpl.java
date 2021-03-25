@@ -136,6 +136,9 @@ class CalculationProcess implements Runnable {
     public void run() {
         synchronized (executor) {
             result = executor.doCalculation(calc, a, b);
+            System.out.println("In CalculationProcess");
+            Matrix.show(result);
+            System.out.println("---------------------------------------------------");
         }
     }
 }
