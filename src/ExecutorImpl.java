@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class ExecutorImpl implements Executor {
     ICalculation calc, multiplication, multiplicationT, subtraction, addition;
     LambdaExecutor lambdaExecutor = new LambdaExecutor();
@@ -20,6 +18,7 @@ public class ExecutorImpl implements Executor {
     }
 
     public double[][] calculateC2(int n) {
+        System.out.println("calculateC2");
         calc = (a, b) -> {
             double[][] ab = new double[n][n];
             for (int i = 0; i < n; i++)
