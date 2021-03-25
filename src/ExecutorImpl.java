@@ -2,6 +2,7 @@ public class ExecutorImpl implements Executor {
     ICalculation calc, multiplication, multiplicationT, subtraction, addition;
     LambdaExecutor lambdaExecutor = new LambdaExecutor();
     static double[][] C2;
+    static double[][] B;
 
     public String ping() {
         System.out.println("Server is active");
@@ -20,19 +21,38 @@ public class ExecutorImpl implements Executor {
     public double[][] calculateC2(int n) {
         System.out.println("calculateC2");
         calc = (a, b) -> {
-            double[][] ab = new double[n][n];
+            double[][] matrix = new double[n][n];
             for (int i = 0; i < n; i++)
                 for (int j = 0; j < n; j++)
-                    ab[j][i] = 20 * (Math.pow(i, 3) - Math.pow(j, 3) + 2);
-            return ab;
+                    matrix[j][i] = 20 * (Math.pow(i, 3) - Math.pow(j, 3) + 2);
+            return matrix;
         };
-        CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor, ExecutorImpl.C2);
+        CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
         try {
             calculationProcess.process.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return calculationProcess.result;
+        C2 = calculationProcess.result;
+        return C2;
+    }
+
+    public double[][] calculateB(int n) {
+        System.out.println("calculateB");
+        calc = (a, b) -> {
+            double[][] vector = new double[n][1];
+            for (int i = 0; i < n; i++)
+                vector[i][0] = 20 * (Math.pow(i, 3) + 20);
+            return vector;
+        };
+        CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
+        try {
+            calculationProcess.process.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        B = calculationProcess.result;
+        return B;
     }
 }
 
@@ -71,7 +91,7 @@ class CalculationProcess implements Runnable {
         this.process.start();
     }
 
-    public CalculationProcess(ICalculation _calc, LambdaExecutor _executor, double[][] _var) {
+    public CalculationProcess(ICalculation _calc, LambdaExecutor _executor) {
         this.calc = _calc;
         this.executor = _executor;
         this.process = new Thread(this);
