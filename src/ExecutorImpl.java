@@ -37,6 +37,11 @@ public class ExecutorImpl implements Executor {
         return new double[n][n];
     }
 
+    public double getDouble(double x) {
+        System.out.println("getDouble");
+        return x;
+    }
+
 
     public double[][] calculateC2(int n) {
         System.out.println("calculateC2");
