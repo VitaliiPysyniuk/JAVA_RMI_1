@@ -43,13 +43,13 @@ public class ExecutorImpl implements Executor {
     }
 
     public double[][] calculateR50(double[][] a) {
-        System.out.println("Calculated R51");
+        System.out.println("Calculated R50");
         R50 =  Matrix.mult(R30, a);
         return R50;
     }
 
     public double[][] calculateR60() {
-        System.out.println("Calculated R61");
+        System.out.println("Calculated R60");
         R60 =  Matrix.mult(R50, R32);
         return R60;
     }
