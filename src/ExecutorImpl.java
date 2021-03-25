@@ -29,6 +29,7 @@ public class ExecutorImpl implements Executor {
 
     public double[][] calculateC2(int n) {
         System.out.println("calculated C2");
+        System.out.println(System.currentTimeMillis());
         calc = (a, b) -> {
             double[][] matrix = new double[n][n];
             for (int i = 0; i < n; i++)
@@ -45,6 +46,7 @@ public class ExecutorImpl implements Executor {
 
     public double[][] calculateB(int n) {
         System.out.println("Calculated B");
+        System.out.println(System.currentTimeMillis());
         calc = (a, b) -> {
             double[][] vector = new double[n][1];
             for (int i = 0; i < n; i++)
