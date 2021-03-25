@@ -26,7 +26,7 @@ public class ExecutorImpl implements Executor {
             return vector;
         };
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
-//        waitForThread(calculationProcess.thread);
+        waitForThread(calculationProcess.thread);
         B = calculationProcess.result;
         return B;
     }
@@ -44,7 +44,7 @@ public class ExecutorImpl implements Executor {
             return matrix;
         };
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
-//        waitForThread(calculationProcess.thread);
+        waitForThread(calculationProcess.thread);
         C2 = calculationProcess.result;
         return C2;
     }
