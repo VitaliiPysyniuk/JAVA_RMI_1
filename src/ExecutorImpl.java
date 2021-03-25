@@ -1,8 +1,8 @@
 public class ExecutorImpl implements Executor {
     ICalculation calc;
     LambdaExecutor lambdaExecutor = new LambdaExecutor();
-    boolean singleThread = false;
     static double[][] C2, B, A2C2;
+    boolean singleThread = false;
 
     public String ping() {
         System.out.println("Server is active");
