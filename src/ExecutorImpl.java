@@ -40,8 +40,8 @@ public class ExecutorImpl implements Executor {
 //        if (singleThread)
 //            waitForThread(calculationProcess.thread);
         C2 = calculationProcess.result;
-        System.out.println("To ye tyt!");
-        Matrix.show(C2);
+        System.out.println("\t\tCalculation result: ");
+        Matrix.show(calculationProcess.result);
         return C2;
     }
 
@@ -57,6 +57,8 @@ public class ExecutorImpl implements Executor {
 //        if (singleThread)
 //            waitForThread(calculationProcess.thread);
         B = calculationProcess.result;
+        System.out.println("\t\tCalculation result: ");
+        Matrix.show(calculationProcess.result);
         return B;
     }
 
@@ -68,26 +70,30 @@ public class ExecutorImpl implements Executor {
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
 //        if (singleThread)
 //            waitForThread(calculationProcess.thread);
+
         A2C2 = calculationProcess.result;
+        System.out.println("\t\tCalculation result: ");
+        Matrix.show(calculationProcess.result);
         return A2C2;
     }
-
-    public void waitForThread(Thread process) {
-        try {
-            process.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void simulateDelay(Thread thread, int milliseconds) {
-        try {
-            thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+//
+//    public void waitForThread(Thread process) {
+//        try {
+//            process.join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    public void simulateDelay(Thread thread, int milliseconds) {
+//        try {
+//            thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
+
 
 
 
@@ -95,13 +101,9 @@ interface ICalculation {
     double[][] doCalculation(double[][] a, double[][] b);
 }
 
-
 class LambdaExecutor {
     public double[][] doCalculation(ICalculation ref, double[][] a, double[][] b) {
-        double[][] result = ref.doCalculation(a, b);
-            System.out.println("\t\tCalculation result: ");
-            Matrix.show(result);
-        return result;
+        return ref.doCalculation(a, b);
     }
 }
 
