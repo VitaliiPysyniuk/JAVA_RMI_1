@@ -3,15 +3,7 @@ import java.rmi.RemoteException;
 
 public interface Executor extends Remote {
     String ping() throws RemoteException;
-    String enableMultithreadedMode() throws RemoteException;
-    String enableSingleThreadedMode() throws RemoteException;
-    double[][] createMatrix(int n, double max, double min) throws RemoteException;
-    double[][] calculateB(int n) throws RemoteException;
-    double[][] calculateC2(int n) throws RemoteException;
-    double[][] calculateC2andB(int n) throws RemoteException;
-    double[][] withoutThreadsB(int n) throws RemoteException;
-    double[][] withoutThreadsC2(int n) throws RemoteException;
-    double[][] calculateA2C2(double[][] a, double[][] b) throws RemoteException;
-
-
+    double[][] calculateR10(int n) throws RemoteException;
+    double[][] calculateR16(int n) throws RemoteException;
+    double[][] calculateR20(double[][] a, double[][] b) throws RemoteException;
 }
