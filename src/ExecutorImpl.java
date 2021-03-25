@@ -20,21 +20,23 @@ public class ExecutorImpl implements Executor {
 
     public double[][] calculateB(int n) {
         System.out.println("calculateB");
-        calc = (a, b) -> {
-            double[][] vector = new double[n][1];
-            for (int i = 0; i < n; i++)
-                vector[i][0] = 20 * (Math.pow(i, 3) + 20);
-            return vector;
-        };
-        CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
-        try {
-            calculationProcess.process.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        B = calculationProcess.result;
-        return B;
+//        calc = (a, b) -> {
+//            double[][] vector = new double[n][1];
+//            for (int i = 0; i < n; i++)
+//                vector[i][0] = 20 * (Math.pow(i, 3) + 20);
+//            return vector;
+//        };
+//        CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
+//        try {
+//            calculationProcess.process.join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        B = calculationProcess.result;
+//        return B;
+        return new double[n][n];
     }
+
 
     public double[][] calculateC2(int n) {
         System.out.println("calculateC2");
