@@ -14,7 +14,8 @@ public class Server {
     public static void main(String[] args) {
         try {
             System.out.println("Server started...");
-            System.setProperty("java.rmi.server.hostname","ec2-34-194-59-42.compute-1.amazonaws.com");
+//            System.setProperty("java.rmi.server.hostname","ec2-34-194-59-42.compute-1.amazonaws.com");
+            System.setProperty("java.rmi.server.hostname","ec2-3-131-94-51.us-east-2.compute.amazonaws.com");
 //            Server obj = new Server();
             ExecutorImpl obj = new ExecutorImpl();
             serviceImpl = obj;
