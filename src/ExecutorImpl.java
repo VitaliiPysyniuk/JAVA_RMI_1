@@ -1,8 +1,8 @@
 public class ExecutorImpl implements Executor {
-    ICalculation calc, multiplication, multiplicationT, subtraction, addition;
+    ICalculation calc;
+//    multiplication, multiplicationT, subtraction, addition;
     LambdaExecutor lambdaExecutor = new LambdaExecutor();
-    static double[][] C2;
-    static double[][] B;
+    static double[][] C2, B;
 
     public String ping() {
         System.out.println("Server is active");
@@ -32,8 +32,8 @@ public class ExecutorImpl implements Executor {
 //            e.printStackTrace();
 //        }
 //        B = calculationProcess.result;
-//        return B;
-        return new double[n][n];
+        B = new double[n][n];
+        return B;
     }
 
     public double getDouble(double x) {
@@ -70,11 +70,11 @@ interface ICalculation {
 class LambdaExecutor {
     public double[][] doCalculation(ICalculation ref, double[][] a, double[][] b) {
         double[][] result = ref.doCalculation(a, b);
-//        if (Decomposition.showІntermResults) {
-        if (false) {
-            System.out.println("\t\tCalculation result: ");
-            Matrix.show(result);
-        }
+//        if (Decomposition.showIntermediateResults) {
+//        if (false) {
+//            System.out.println("\t\tCalculation result: ");
+//            Matrix.show(result);
+//        }
         return result;
     }
 }
@@ -107,9 +107,9 @@ class CalculationProcess implements Runnable {
 
     public void run() {
         synchronized (executor) {
-//            if (Decomposition.showІntermResults)
-            if (false)
-                System.out.println("\n" + this.process.getName() + " execute calculation: ");
+//            if (Decomposition.showIntermediateResults)
+//            if (false)
+//                System.out.println("\n" + this.process.getName() + " execute calculation: ");
             result = executor.doCalculation(calc, a, b);
         }
     }
