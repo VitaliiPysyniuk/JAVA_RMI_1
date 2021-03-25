@@ -37,7 +37,6 @@ public class ExecutorImpl implements Executor {
             return matrix;
         };
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
-        waitForThread(calculationProcess.thread);
         if (singleThread)
             waitForThread(calculationProcess.thread);
         C2 = calculationProcess.getResult();
@@ -53,7 +52,6 @@ public class ExecutorImpl implements Executor {
             return vector;
         };
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
-        waitForThread(calculationProcess.thread);
         if (singleThread)
             waitForThread(calculationProcess.thread);
         B = calculationProcess.getResult();
@@ -66,7 +64,6 @@ public class ExecutorImpl implements Executor {
             return Matrix.mult(aa, bb);
         };
         CalculationProcess calculationProcess = new CalculationProcess(calc, lambdaExecutor);
-        waitForThread(calculationProcess.thread);
         if (singleThread)
             waitForThread(calculationProcess.thread);
         A2C2 = calculationProcess.getResult();
